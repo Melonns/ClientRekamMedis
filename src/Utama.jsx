@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import { format } from "date-fns";
-require("dotenv").config();
 
 function Utama() {
   const [data, setData] = useState([]);
@@ -21,7 +20,7 @@ function Utama() {
 
   const refreshStats = () => {
     console.log("🔁 Memanggil refreshStats()");
-    fetch(`${import.meta.env.VITE_API_URL}/stats`)
+    fetch("/api/stats")
       .then((res) => res.json())
       .then((data) => {
         console.log("📊 Data statistik dari server:", data);
@@ -52,7 +51,7 @@ function Utama() {
     console.log("fetchData dipanggil dengan:", params.toString());
 
     setLoading(true);
-    fetch(`${import.meta.env.VITE_API_URL}/data?${params.toString()}`)
+    fetch(`/api/data?${params.toString()}`)
       .then((res) => res.json())
       .then((result) => {
         setData(result);
@@ -97,7 +96,7 @@ function Utama() {
       "Apakah Anda yakin ingin menghapus data ini?"
     );
     if (isConfirmed) {
-      fetch(`${import.meta.env.VITE_API_URL}/data/delete/${id}`, { method: "DELETE" })
+      fetch(`api/data/delete/${id}`, { method: "DELETE" })
         .then((res) => res.json())
         .then(() => {
           setData(data.filter((item) => item.id !== id));
@@ -121,7 +120,7 @@ function Utama() {
     tanggal: formattedTanggal, // ⬅️ ini pasti sesuai lokal
   };
 
-  fetch(`${import.meta.env.VITE_API_URL}/data/edit/${editData.id}`, {
+  fetch(`api/data/edit/${editData.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -171,7 +170,7 @@ function Utama() {
 
     console.log("📤 Mengirim data:", pasienData);
 
-    fetch(`${import.meta.env.VITE_API_URL}/data`, {
+    fetch("api/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
