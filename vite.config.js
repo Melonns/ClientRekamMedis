@@ -14,4 +14,8 @@ export default defineConfig({
     //   },
     // },
   },
+  preview: {
+    host: true,
+    allowedHosts: ['clientrekammedis-production.up.railway.app']
+  },
 });
