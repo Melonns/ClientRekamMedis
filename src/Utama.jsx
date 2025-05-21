@@ -20,7 +20,7 @@ function Utama() {
 
   const refreshStats = () => {
     console.log("🔁 Memanggil refreshStats()");
-    fetch(`${import.meta.env.VITE_API_URL}stats`)
+    fetch(`${import.meta.env.VITE_API_URL}/stats`)
       .then((res) => res.json())
       .then((data) => {
         console.log("📊 Data statistik dari server:", data);
