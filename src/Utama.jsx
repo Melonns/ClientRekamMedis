@@ -193,7 +193,7 @@ function Utama() {
   };
 
   return (
-    <main className="bg-white min-h-screen">
+    <main className="p-6 bg-white min-h-screen">
       {/* <h2 className="mb-2">Data Pasien</h2> */}
       {/* <input
         className="border-solid border-2 border-gray-300 rounded-md p-2 mb-4"
