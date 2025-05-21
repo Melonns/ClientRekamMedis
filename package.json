@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "chmod +x ./node_modules/.bin/vite",
     "build": "vite build",
-    "start": "vite preview --host --port $PORT"
+    "preview": "vite preview",
+    "start": "chmod +x ./node_modules/.bin/vite && vite preview --host --port $PORT"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
